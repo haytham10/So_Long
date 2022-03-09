@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:05:11 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/05 21:21:48 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:12:46 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	isborder(t_data *data, int i)
 {
 	if (i < data->game->width
-		|| i > (data->game->width + 1) * (data->game->height -1)
+		|| i > (data->game->width + 1) * (data->game->height - 1)
 		|| i % (data->game->width + 1) == 0
 		|| i % (data->game->width + 1) == data->game->width - 1)
 		return (1);
@@ -47,7 +47,7 @@ void	map_isvalid(t_data *data, char *file)
 	while (file[++i] != 0)
 	{
 		if (file[i] == '\n')
-			break ;
+			continue ;
 		if (isborder(data, i))
 		{
 			if (file[i] != '1')

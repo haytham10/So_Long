@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:30:49 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:55:20 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 16:09:31 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	texture_load(t_data *data, t_img **img, char *path)
 static void	texture_init(t_data *data)
 {
 	texture_load(data, &data->player, "./idle_right.xpm");
-	texture_load(data, &data->exit, "");
-	texture_load(data, &data->coll, "");
+	texture_load(data, &data->exit, "./exit.xpm");
+	texture_load(data, &data->coll, "./coll.xpm");
 	texture_load(data, &data->wall, "./wall.xpm");
 	texture_load(data, &data->floor, "./floor.xpm");
 }

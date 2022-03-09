@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 11:17:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:49:29 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:40:05 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef	struct s_data
 	t_img	*player;
 	t_img	*exit;
 	t_img	*coll;
-	t_img	*wall; // 30B - W // 16B - H
+	t_img	*wall;
 	t_img	*floor;
 }	t_data;
 

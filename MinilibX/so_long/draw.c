@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:41:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:43:35 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:32:53 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,49 @@ static void	draw_square(t_data *data, t_img *img, int x, int y)
 		i = 0;
 		while (i < 40)
 		{
-				color = d_get_pixel(img, i, j);
-				if (color != d_rgb_to_int(0, 255, 255, 255))
-					draw_pixel(data->mlx_img, x + i, y + j, color);
-				i++;
+			color = d_get_pixel(img, i, j);
+			if (color != d_rgb_to_int(0, 255, 255, 255))
+				draw_pixel(data->mlx_img, x + i, y + j, color);
+			i++;
 		}
 		j++;
 	}
 }
-static void	draw_e(t_data *data, int i, int j)
+
+static void	draw_env(t_data *data, int i, int j)
 {
-	int	k;
+	int				k;
 
 	if (data->game->exit.x == i && data->game->exit.y == j)
 		draw_square(data, data->exit, i * 40, j * 40);
 	k = -1;
 	while (++k < data->game->count_coll)
 		if (data->game->coll[k].x == i && data->game->coll[k].y == j)
-			draw_square(data, data->player, i * 40, j * 40);
+			draw_square(data, data->coll, i * 40, j * 40);
+	if (data->game->player.x == i && data->game->player.y == j)
+		draw_square(data, data->player, i * 40, j * 40);
 }
+
 static void	draw_map(t_data *data)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
 
 	j = 0;
 	while (j < data->game->height)
 	{
 		i = 0;
-		if (data->game->map[j][i] == 1)
-			draw_square(data, data->wall, i * 40, j * 40);
-		else
-			draw_square(data, data->floor, i * 40, j * 40);
-		draw_e(data, i, j);
-		i++;
+		while (i < data->game->width)
+		{
+			if (data->game->map[j][i] == 1)
+				draw_square(data, data->wall, i * 40, j * 40);
+			else
+				draw_square(data, data->floor, i * 40, j * 40);
+			draw_env(data, i, j);
+			i++;
+		}
+		j++;
 	}
-	j++;
 }
 
 void	draw(t_data *data)
