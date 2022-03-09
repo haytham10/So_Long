@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 11:17:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 02:11:06 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:49:29 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef	struct s_data
 	t_img	*floor;
 }	t_data;
 
-t_data			data_init(char *name);
+t_data			*data_init(char *name);
 int				map_check(char *map);
 void			destroyer(t_data *data, char *msg);
 void			dest_game(t_game *game);
@@ -96,7 +96,8 @@ unsigned int	d_get_pixel(t_img *img, int x, int y);
 void			ft_putchar(int c);
 void			ft_putstr(char *str);
 char			*ft_strjoin(char *s1, char *s2);
-void			*ft_calloc(int count, int size);
+void			*ft_calloc(size_t count, size_t size);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
 void 			ft_putnbr(int n);
 int				ft_strlen(char *s);
 

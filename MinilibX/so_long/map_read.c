@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 20:55:12 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/05 23:20:54 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:42:25 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	map_read(t_data *data, char *file)
 	map_width(data, file);
 	map_height(data, file);
 	map_isvalid(data, file);
-	data->game->coll = (t_data *)malloc(sizeof(t_data) * data->game->count_coll);
+	data->game->coll = (t_coor *)malloc(sizeof(t_coor) * data->game->count_coll);
 	if (data->game->coll == 0)
 	{
 		free(file);

@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:49:09 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:12:10 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:45:22 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ unsigned int	d_get_pixel(t_img *img, int x, int y)
 
 unsigned int	d_rgb_to_int(int o, int r, int g, int b)
 {
-	return (0 << 24 | r << 16 | g << 8 | b);
+	return (o << 24 | r << 16 | g << 8 | b);
 }
 
 void	draw_pixel(t_img *img, int x, int y, int color)

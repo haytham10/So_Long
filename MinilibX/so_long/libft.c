@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 00:37:53 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:21:30 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:46:26 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_putstr(char *str)
 
 	i = 0;
 	if (!str)
-		return (NULL);
+		destroyer(0, "NULL");
 	while (str[i])
 		ft_putchar(str[i++]);
 }

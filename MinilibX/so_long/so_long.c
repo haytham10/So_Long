@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:38:06 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 00:45:29 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:32:57 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	main(int ac, char **av)
 	t_data	*data;
 	
 	if (ac != 2)
-		death("INVALID NUMBER OF ARGUMENTS\n");
+		death("INVALID NUMBER OF ARGUMENTS");
 	if (map_check(av[1]) == 0)
-		death("INVALID MAP ARGUMENTS\n");
+		death("INVALID MAP ARGUMENT");
 	data = data_init(av[1]);
 	draw(data);
 	mlx_hook(data->mlx_win, EVENT_KEY_PRESS, EVENT_KEY_PRESS_MASK, key_press, data);

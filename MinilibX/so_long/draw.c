@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:41:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:11:32 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:35 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	draw_map(t_data *data)
 	j = 0;
 	while (j < data->game->height)
 	{
+		i = 0;
 		if (data->game->map[j][i] == 1)
 			draw_square(data, data->wall, i * 40, j * 40);
 		else

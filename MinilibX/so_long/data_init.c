@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:30:49 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:09:36 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:55:20 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void	texture_load(t_data *data, t_img **img, char *path)
 
 static void	texture_init(t_data *data)
 {
-	texture_load(data, &data->player, "");
+	texture_load(data, &data->player, "./idle_right.xpm");
 	texture_load(data, &data->exit, "");
 	texture_load(data, &data->coll, "");
-	texture_load(data, &data->wall, "");
-	texture_load(data, &data->floor, "");
+	texture_load(data, &data->wall, "./wall.xpm");
+	texture_load(data, &data->floor, "./floor.xpm");
 }
 
 static void	render_init(t_data *data)
@@ -39,16 +39,16 @@ static void	render_init(t_data *data)
 	if (data->mlx_ptr == 0)
 		destroyer(data, "MLX not loaded");
 	data->mlx_win = mlx_new_window(data->mlx_ptr, data->game->width * 40,
-		data->game->height * 40, "so_long");
+			data->game->height * 40, "so_long");
 	if (data->mlx_win == 0)
 		destroyer(data, "Can't Create a Window");
 	data->mlx_img = mlx_new_image(data->mlx_ptr, data->game->width * 40,
-		data->game->height * 40);
+			data->game->height * 40);
 	if (data->mlx_img == 0)
 		destroyer(data, "Can't Create an Image");
 }
 
-t_data	data_init(char *name)
+t_data	*data_init(char *name)
 {
 	t_data	*data;
 

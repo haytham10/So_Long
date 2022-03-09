@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:36:06 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:14:35 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:39:29 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	game_init(t_data *data, char *name)
 	data->game->count_coll = 0;
 	data->game->count_exit = 0;
 	data->game->count_player = 0;
-	data->game->exit = 0;
+	data->game->exit.x = 0;
+	data->game->exit.y = 0;
 	data->game->height = 0;
 	data->game->map = 0;
 	data->game->p_coll = 0;
@@ -30,7 +31,8 @@ void	game_init(t_data *data, char *name)
 	data->game->p_move = 0;
 	data->game->p_right = 0;
 	data->game->p_up = 0;
-	data->game->player = 0;
+	data->game->player.x = 0;
+	data->game->player.y = 0;
 	data->game->width = 0;
 	map_init(data, name);
 }
