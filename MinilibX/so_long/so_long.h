@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 11:17:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/09 19:40:05 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:38:24 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,54 +19,78 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-typedef	struct s_coor
-{
-	int	x;
-	int	y;
-}	t_coor;
+// typedef	struct s_coor
+// {
+// 	int	x;
+// 	int	y;
+// }	t_coor;
 
-typedef	struct s_game
-{
-	int		**map;
-	int		height;
-	int		width;
-	t_coor	player;
-	int		p_up;
-	int		p_down;
-	int		p_left;
-	int		p_right;
-	int		p_move;
-	int		p_coll;
-	t_coor	exit;
-	t_coor	*coll;
-	int		count_player;
-	int		count_coll;
-	int		count_exit;
-}	t_game;
+// typedef	struct s_game
+// {
+// 	int		**map;
+// 	int		height;
+// 	int		width;
+// 	t_coor	player;
+// 	int		p_up;
+// 	int		p_down;
+// 	int		p_left;
+// 	int		p_right;
+// 	int		p_move;
+// 	int		p_coll;
+// 	t_coor	exit;
+// 	t_coor	*coll;
+// 	int		count_player;
+// 	int		count_coll;
+// 	int		count_exit;
+// }	t_game;
 
-typedef	struct s_img
+// typedef	struct s_img
+// {
+// 	void	*mlx_img;
+// 	char	*addr;
+// 	char	*data;
+// 	int		bpp;
+// 	int		len;
+// 	int		endian;
+// 	int		img_height;
+// 	int		img_width;
+// }	t_img;
+
+typedef	struct s_map
 {
-	void	*mlx_img;
-	char	*addr;
-	char	*data;
-	int		bpp;
-	int		len;
-	int		endian;
-	int		img_height;
-	int		img_width;
-}	t_img;
+	char	**map;
+}	t_map;
+
+typedef	struct s_player
+{
+	int		h;
+	int		v;
+	t_map	map;
+}	t_player;
 
 typedef	struct s_data
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
-	t_img	*mlx_img;
-	t_game	*game;
-	t_img	*player;
-	t_img	*exit;
-	t_img	*coll;
-	t_img	*wall;
-	t_img	*floor;
+	t_map		map;
+	t_player	m_player;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	void		*player;
+	void		*exit;
+	void		*coll;
+	void		*wall;
+	void		*floor;
+	int			count_coll;
+	int			coll_sum;
+	int			steps;
+	char		*p_wall;
+	char		*p_floor;
+	char		*p_player;
+	char		*p_exits;
+	char		*p_coll;
+	int			img_width;
+	int			img_height;
+	int			x;
+	int			y;
 }	t_data;
 
 t_data			*data_init(char *name);

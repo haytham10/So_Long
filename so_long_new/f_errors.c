@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   f_errors.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/05 21:49:09 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/14 15:59:50 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/14 17:05:49 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/14 20:20:44 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// unsigned int	d_get_pixel(t_img *img, int x, int y)
-// {
-// 	return ((img->data + (x * img->bpp / 8 + y * img->len)));
-// }
-
-void	draw_pixel(t_img *mlx_img, int x, int y, int color)
+void	f_errors(t_data *game)
 {
-	char			*dst;
-
-	dst = mlx_img->data + (x * mlx_img->bpp / 8 + y * mlx_img->len);
-	*(unsigned int *)dst = color;
-}
-
-unsigned int	d_rgb_to_int(int o, int r, int g, int b)
-{
-	return (o << 24 | r << 16 | g << 8 | b);
+	if (check_map1(game) == -1 || check_map2(game) == -1
+		|| check_map3(game) == -1 || check_min(game) == -1
+		|| check_square(game) == -1)
+			death("INVALID MAP");
 }

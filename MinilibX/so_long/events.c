@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 22:17:47 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/06 01:12:38 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:16:14 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int key, t_data *data)
 {
 	if (key == KEY_ESC)
-		destroyer(data, 0);
+		destroyer(data, "EXITED GAME");
 	if (key == KEY_W)
 		data->game->p_up = 1;
 	if (key == KEY_A)
@@ -46,6 +46,6 @@ int	destroy_hook(int key, t_data *data)
 {
 	(void)key;
 	(void)data;
-	destroyer(0, 0);
+	destroyer(0, "EXIT GAME");
 	return (0);
 }

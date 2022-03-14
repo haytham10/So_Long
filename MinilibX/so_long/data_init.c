@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:30:49 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/09 16:09:31 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:02:03 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static void	render_init(t_data *data)
 			data->game->height * 40, "so_long");
 	if (data->mlx_win == 0)
 		destroyer(data, "Can't Create a Window");
-	data->mlx_img = mlx_new_image(data->mlx_ptr, data->game->width * 40,
-			data->game->height * 40);
-	if (data->mlx_img == 0)
-		destroyer(data, "Can't Create an Image");
+	// data->mlx_img = mlx_new_image(data->mlx_ptr, data->game->width * 40,
+	// 		data->game->height * 40);
+	// if (data->mlx_img == 0)
+	// 	destroyer(data, "Can't Create an Image");
 }
 
 t_data	*data_init(char *name)
