@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 22:46:52 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/18 22:59:00 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/31 14:29:26 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/31 14:47:43 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_player(t_game *game)
+void	game_window(t_game *game)
 {
-	draw_objs(game);
-	anime_coll(game);
-	draw_exit(game);
-	anime_player(game);
-	if (game->offset % 50 == 0)
-		draw_init(game);
+	int	i;
+
+	i = 0;
+	game->map_w = ft_strlen(game->map[0] * 50);
+	while (game->map[i] != NULL)
+		i++;
+	game->map_h = i * 50;
 }
 
-int	loop_hook(t_game *game)
+int	main(int ac, char **av)
 {
-	static unsigned int frame;
+	t_game	game;
 
-	if (!(++frame % 500))
-	{
-		if (game->move_status != 0)
-			move_player(game);
-		else
-			anime_coll(game);
-	}
-	return (1);
+	if (ac != 2)
+		errooor("INVALID ARGUMENTS");
+	if (file_check(av[1]) != 1)
+		errooor("INVALID FILE");
+	game.mlx = mlx_init();
+	game.moves = 1;
+	game.frame = 1;
+	game.loop = 0;
+	get_map(av[1], &game);
+	game_window(&game);
+	map_game(&game);
 }

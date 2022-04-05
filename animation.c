@@ -5,46 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 22:17:46 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/18 22:56:57 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/04/05 17:46:40 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/05 18:24:57 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	anime_player(t_game *game)
+void	move_enemy(t_game *game)
 {
-	int	step;
+	int	img_w;
+	int	img_h;
 
-	step = 4;
-	if (game->move_status == 2)
-		handle_location(game, step, 0);
-	else if (game->move_status == 1)
-		handle_location(game, -step, 0);
-	else if (game->move_status == 4)
-		handle_location(game, 0, -step);
-	else if (game->move_status == 3)
-		handle_location(game, 0, step);
-	game->offset += step;
-	if (game->offset > 5000)
-		game->offset = 0;
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		game->player.obj->img, game->player.x, game->player.y);
-	game->player.obj = game->player.obj->next;
+	game->img = mlx_xpm_file_to_image(game->mlx, "./img/floor.xpm", &img_w, &img_h);
+	mlx_put_image_to_window(game->mlx, game->win, game->img,
+		game->enemies.x_enemy * 50, game->enemies.y_enemy * 50);
+	if (game->map[game->enemies.y_enemy][game->enemies.x_enemy + 1] != '1'
+		&& game->map[game->enemies.y_enemy][game->enemies.x_enemy + 1] != 'E'
+		&& game->map[game->enemies.y_enemy][game->enemies.x_enemy + 1] != 'C'
+		&& game->enemies.move == 0)
+		game->enemies.x_enemy++;
+	else
+		game->enemies.move = 1;
+	if (game->map[game->enemies.y_enemy][game->enemies.x_enemy - 1] == '1'
+		&& game->map[game->enemies.y_enemy][game->enemies.x_enemy - 1] != 'C'
+		&& game->map[game->enemies.y_enemy][game->enemies.x_enemy - 1] != 'E'
+		&& game->enemies.move == 1)
+		game->enemies.x_enemy--;
+	else
+		game->enemies.move = 0;
 }
 
-void	anime_coll(t_game *game)
+static void	game_over(t_game *game, char *msg)
 {
-	t_coord	*coll;
+	int	i;
 
-	coll = game->coll.coll;
-	while (coll)
+	i = 0;
+	while (game->map[i])
 	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->objs.floor, coll->x, coll->y);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->coll.obj->img, coll->x, coll->y);
-		coll = coll->next;
+		free(game->map[i]);
+		i++;
 	}
-	game->coll.obj = game->coll.obj->next;
+	free(game->map);
+	ft_putstr(msg);
+	ft_putchar('\n');
+	exit(0);
+}
+
+void	render_img(t_game *game)
+{
+	int	i;
+	int	j;
+
+	game->enemies.imgs[0] = "./imgs/enemy0.xpm";
+	game->enemies.imgs[1] = "./imgs/enemy1.xpm";
+	game->enemies.imgs[2] = "./imgs/enemy2.xpm";
+	game->enemies.imgs[3] = "./imgs/enemy3.xpm";
+	game->enemies.imgs[4] = "./imgs/enemy4.xpm";
+	game->enemies.imgs[5] = "./imgs/enemy5.xpm";
+	game->enemies.imgs[6] = "./imgs/enemy6.xpm";
+	game->enemies.imgs[7] = "./imgs/enemy7.xpm";
+	game->img = mlx_xpm_file_to_image(game->mlx, "./img/floor.xpm", &i, &j);
+	mlx_put_image_to_window(game->mlx, game->win, game->img,
+		game->enemies.x_enemy * 50, game->enemies.y_enemy * 50);
+	game->img = mlx_xpm_file_to_image (game->mlx, game->enemies.imgs[game->enemies.x], &i, &j);
+	mlx_put_image_to_window(game->mlx, game->win, game->img,
+		game->enemies.x_enemy * 50, game->enemies.y_enemy * 50);
+}
+
+int	animation(t_game *game)
+{
+	if (enemy_pos(game) != 0)
+	{
+		if (game->enemies.sleep-- <= 0)
+		{
+			game->enemies.x++;
+			game->enemies.sleep = 5;
+		}
+		if (game->enemies.x == 3)
+			game->enemies.x = 0;
+		if (game->enemies.s_move-- <= 0)
+		{
+			move_enemy(game);
+			game->enemies.s_move = 30;
+		}
+		if ((game->enemies.y_enemy == game->y_player / 50)
+			&& (game->enemies.x_enemy == game->x_player / 50))
+			game_over(game, "GAME OVER :(\n");
+		render_img(game);
+	}
+	if (game->coll <= 0)
+		open_door(game);
+	return (0);
 }

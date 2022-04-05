@@ -5,51 +5,112 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 20:51:11 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/18 21:54:10 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/04/05 17:24:13 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/05 18:32:28 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*get_line(int fd)
+static int	check(t_game *game, int x, int y)
 {
-	char	*line;
-	char	eol;
-	int		len;
-
-	line = get_next_line(fd);
-	if (!line)
-		return (NULL);
-	len = ft_strlen(line);
-	eol = line[len - 1];
-	if (eol == '\n')
-		line[len - 1] = 0;
-	return (line);
+	if (game->map[y][x] == '0' && game->map[y][x + 1] == '0'
+		&& game->map[y][x + 2] == '0')
+	{
+		game->enemies.sign = 0;
+		game->enemies.x_enemy = x;
+		game->enemies.y_enemy = y;
+		return (1);
+	}
+	return (0);
 }
 
-void	player_pos(t_game *game, t_list **objs, char *path, int cnt)
+int	enemy_pos(t_game *game)
 {
-	t_list	*tmp;
-	int		num;
-	int		i;
-	int		width;
-	int		height;
+	int	y;
+	int	x;
+	int	height;
 
-	*objs = (t_list *)malloc(sizeof(t_list));
-	tmp = *objs;
-	i = 0;
-	while (i < cnt)
+	y = 0;
+	height = get_height(game->map);
+	if (game->enemies.sign)
 	{
-		num = '0' + i;
-		tmp->img = mlx_xpm_file_to_image(game->mlx_ptr, path,
-			&width, &height);
-		if (i != cnt - 1)
+		while (y != height)
 		{
-			tmp->next = (t_list *)malloc(sizeof(t_list));
-			tmp = tmp->next;
+			x = 0;
+			while (game->map[y][x] != '\0')
+			{
+				if (check(game, x, y))
+					return (1);
+				x++;
+			}
+			y++;
 		}
+		return (0);
+	}
+	return (1);
+}
+
+void	open_door(t_game *game)
+{
+	int	y;
+	int	x;
+	int	height;
+	int	img_w;
+	int	img_h;
+
+	y = 0;
+	height = get_height(game->map);
+	while (y != height)
+	{
+		x = 0;
+		while (game->map[y][x] != '\0')
+		{
+			if (game->map[y][x] == 'E')
+			{
+				game->img = mlx_xpm_file_to_image(game->mlx,
+					"./imgs/open_exit.xpm", &img_w, &img_h);
+				mlx_put_image_to_window(game->mlx, game->win, game->img,
+					x * 50, y * 50);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void	use_door(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->map[i])
+	{
+		free(game->map[i]);
 		i++;
 	}
-	tmp->next = *objs;
+	free(game->map);
+	mlx_destroy_window(game->mlx, game->win);
+	exit(1);
+}
+
+void	load_text(t_game *game)
+{
+	int		img_w;
+	int		img_h;
+	char	*text;
+	char	*num;
+
+	num = ft_itoa(++game->movement);
+	text = ft_strjoin("Steps: ", num);
+	game->img = mlx_xpm_file_to_image(game->mlx,
+		"./imgs/wall.xpm", &img_w, &img_h);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 50, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 100, 0);
+	mlx_string_put(game->mlx, game->win, 5, 10, 0xFFFFFF, text);
+	ft_putstr(num);
+	ft_putchar('\n');
+	free(text);
+	free(num);
 }

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   death.c                                            :+:      :+:    :+:   */
+/*   map_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 20:35:10 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/18 20:42:07 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/31 14:47:57 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/31 14:54:35 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	death(char *str)
+int	map_game(t_game *game)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-	exit(0);
+	if (map_check(game) == 0)
+		errooor("INVALID MAP");
 }

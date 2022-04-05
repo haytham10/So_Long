@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:28:56 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/18 23:40:14 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/05 18:28:20 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,27 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+#define	BUFFER_SIZE	1024
+
+typedef struct s_gnl
+{
+	char		**file_rest;
+	char		*line;
+	int			max_fd;
+}				t_gnl;
+
 void	ft_putchar(char c);
 void	ft_putstr(char *s);
 int		ft_strlen(const char *s);
-void	*ft_realloc(void *buf, int before_size, int after_size);
+void 	ft_putnbr(int n);
+char	*ft_itoa(int n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(const char *s1, const char *s2);
+void	*ft_realloc(void *buf, int b_size, int a_size);
 char	*ft_strchr(const char *str, int c);
+char	*ft_strdup(char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+char	**ft_split(const char *str, char charset);
 char	*get_next_line(int fd);
 
 #endif

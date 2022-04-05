@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 23:39:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/26 22:59:47 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/23 00:38:48 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/23 00:39:15 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *buf, int b_size, int a_size)
+void ft_putnbr(int n)
 {
-	int		i;
-	char	**src;
-	char	**dst;
-
-	src = (char **)buf;
-	dst = (char **)malloc(sizeof(char *) * a_size);
-	i = 0;
-	while (i < b_size)
+	unsigned int nb;
+	if(n < 0)
 	{
-		dst[i] = src[i];
-		i++;
+		nb = -n;
+		ft_putchar ('-');
 	}
-	return ((void *)dst);
+	else
+		nb = n;
+	if(nb > 9)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + 48);
 }

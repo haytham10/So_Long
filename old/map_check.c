@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 23:39:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/26 22:59:47 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/31 14:48:54 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/04 20:32:35 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	*ft_realloc(void *buf, int b_size, int a_size)
+int	map_check(t_game *game)
 {
-	int		i;
-	char	**src;
-	char	**dst;
+	int	i;
+	int	j;
 
-	src = (char **)buf;
-	dst = (char **)malloc(sizeof(char *) * a_size);
 	i = 0;
-	while (i < b_size)
+	while (game->map[i] != NULL)
 	{
-		dst[i] = src[i];
+		j = 0;
+		while (game->map[i][j] != '\0')
+		{
+			if (game->map[i][j] != 'P' && game->map[i][j] != 'E'
+				&& game->map[i][j] != '1' && game->map[i][j] != '0'
+				&& game->map[i][j] != 'F' && game->map[i][j] != 'C')
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	return ((void *)dst);
+	return (1);
 }

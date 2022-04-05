@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   errooor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 23:39:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/26 22:59:47 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/31 14:43:17 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/05 17:18:08 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	*ft_realloc(void *buf, int b_size, int a_size)
+void	error_handler(t_game *game, char *msg)
 {
-	int		i;
-	char	**src;
-	char	**dst;
+	int	i;
 
-	src = (char **)buf;
-	dst = (char **)malloc(sizeof(char *) * a_size);
 	i = 0;
-	while (i < b_size)
+	while (game->map[i])
 	{
-		dst[i] = src[i];
+		free(game->map[i]);
 		i++;
 	}
-	return ((void *)dst);
+	free(game->map);
+	ft_putstr(msg);
+	ft_putchar('\n');
+	exit(1);
+}
+
+void	errooor(char *str)
+{
+	ft_putstr(str);
+	ft_putchar('\n');
+	exit(1);
 }

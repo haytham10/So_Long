@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_memove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 23:39:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/26 22:59:47 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/26 23:42:47 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/26 23:43:07 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *buf, int b_size, int a_size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		i;
-	char	**src;
-	char	**dst;
+	size_t	i;
+	char	*s1;
+	char	*s2;
 
-	src = (char **)buf;
-	dst = (char **)malloc(sizeof(char *) * a_size);
-	i = 0;
-	while (i < b_size)
+	s1 = (char *)dest;
+	s2 = (char *)src;
+	if (dest > src)
 	{
-		dst[i] = src[i];
-		i++;
+		i = n - 1;
+		while (n--)
+		{
+			s1[i] = s2[i];
+			i--;
+		}
 	}
-	return ((void *)dst);
+	else if (dest < src)
+		ft_memcpy(dest, src, n);
+	return (dest);
 }

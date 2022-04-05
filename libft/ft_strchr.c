@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 23:39:44 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/03/26 22:59:47 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/03/26 23:08:52 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/03/26 23:08:58 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *buf, int b_size, int a_size)
+char	*ft_strchr(const char *str, int c)
 {
-	int		i;
-	char	**src;
-	char	**dst;
+	int	i;
 
-	src = (char **)buf;
-	dst = (char **)malloc(sizeof(char *) * a_size);
 	i = 0;
-	while (i < b_size)
+	while (str[i])
 	{
-		dst[i] = src[i];
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
 		i++;
 	}
-	return ((void *)dst);
+	if (str[i] == (char)c)
+		return ((char *)&str[i]);
+	return (NULL);
 }
