@@ -19,7 +19,13 @@ SRCS_BONUS = ./bonus/animation_bonus.c ./bonus/checkers_bonus.c \
 
 LIBFT = ./libft/libft.a
 
+INCLUDE = ./mandatory/so_long.h
+
+INC_BONUS = ./bonus/so_long_bonus.h
+
 MLX_API = -lmlx -framework OpenGL -framework AppKit
+
+GREEN := $(shell tput -Txterm setaf 2)
 
 all : $(NAME)
 
@@ -30,18 +36,22 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 $(NAME) : $(OBJS)
+	@echo $(GREEN)"MAKING SO_LONG..."
 	@$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_API) -o $(NAME)
 
 $(BONUS) : $(OBJS_BONUS)
+	@echo $(GREEN)"MAKING SO_LONG_BONUS..."
 	@$(CC) $(FLAGS) $(SRCS_BONUS) $(LIBFT) $(MLX_API) -o $(BONUS)
 
-%.o : %.c %.h
+%.o : %.c $(INCLUDE) $(INC_BONUS)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 clean :
 	@rm -f $(OBJS) $(OBJS_BONUS)
+	@echo $(GREEN)"REMOVING .o FILES..."
 
 fclean : clean
 	@rm -f $(NAME) $(BONUS)
+	@echo $(GREEN)"REMOVING SO_LONG..."
 
 re : fclean all

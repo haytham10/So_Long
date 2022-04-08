@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:09:19 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 21:37:24 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:12:56 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	load_img(t_game *game, char *img, int x, int y);
 void	load_texture(t_game *game, char obj, int x, int y);
 void	load_steps(t_game *game);
 void	render_map(t_game *game);
-void	render_img(t_game *game);
+void	render_enemy(t_game *game);
 void	game_init(t_game *game);
 int		key_press(int key, t_game *game);
 void	move_up(t_game *game);

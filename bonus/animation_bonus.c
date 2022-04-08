@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:45:34 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 21:46:50 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:12:37 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	animation(t_game *game)
 			ft_putstr("LOOOSER!!!\n");
 			game_over(game);
 		}
-		render_img(game);
+		render_enemy(game);
 	}
 	if (game->coll <= 0)
 		open_door(game);

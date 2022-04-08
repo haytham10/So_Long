@@ -6,13 +6,13 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:56:41 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 22:27:39 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:12:51 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	render_img(t_game *game)
+void	render_enemy(t_game *game)
 {
 	game->enemy.img[0] = "assets/enemy0.xpm";
 	game->enemy.img[1] = "assets/enemy1.xpm";

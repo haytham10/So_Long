@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:57:39 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 22:29:15 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:34:28 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ static void	valid_char(t_game *game)
 			map.x++;
 		}
 	}
-	if (map.c == 0 || map.p == 0 || map.e == 0)
-		f_error("MAP MUST CONTAIN: PLAYER = 1\nEXIT > 1\nCOLLECTABLE > 1");
+	if (map.c == 0 || map.p != 1 || map.e != 1)
+		f_error("MAP MUST CONTAIN:\nPLAYER = 1\nEXIT = 1\nCOLLECTABLE > 1");
 }
 
 void	valid_map(t_game *game)
