@@ -30,18 +30,18 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_API) -o $(NAME)
+	@$(CC) $(FLAGS) $(SRCS) $(LIBFT) $(MLX_API) -o $(NAME)
 
 $(BONUS) : $(OBJS_BONUS)
-	$(CC) $(FLAGS) $(SRCS_BONUS) $(LIBFT) $(MLX_API) -o $(BONUS)
+	@$(CC) $(FLAGS) $(SRCS_BONUS) $(LIBFT) $(MLX_API) -o $(BONUS)
 
 %.o : %.c %.h
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean :
-	rm -f $(OBJS) $(OBJS_BONUS)
+	@rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
-	rm -f $(NAME) $(BONUS)
+	@rm -f $(NAME) $(BONUS)
 
 re : fclean all

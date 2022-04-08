@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:26:43 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 22:14:58 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:27:31 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	load_steps(t_game *game)
 
 	num = ft_itoa(++game->movement);
 	text = ft_strjoin("Steps: ", num);
-	game->img = mlx_xpm_file_to_image(game->mlx, "../assets/wall.xpm", &w, &h);
+	game->img = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &w, &h);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 50, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 100, 0);
@@ -44,27 +44,27 @@ void	load_img(t_game *game, char *img, int x, int y)
 void	load_texture(t_game *game, char obj, int x, int y)
 {
 	if (obj == '1')
-		load_img(game, "../assets/wall.xpm", x, y);
+		load_img(game, "assets/wall.xpm", x, y);
 	else if (obj == 'E')
 	{
-		load_img(game, "../assets/floor.xpm", x, y);
-		load_img(game, "../assets/exit.xpm", x, y);
+		load_img(game, "assets/floor.xpm", x, y);
+		load_img(game, "assets/exit.xpm", x, y);
 	}
 	else if (obj == 'C')
 	{
-		load_img(game, "../assets/floor.xpm", x, y);
-		load_img(game, "../assets/coll.xpm", x, y);
+		load_img(game, "assets/floor.xpm", x, y);
+		load_img(game, "assets/coll.xpm", x, y);
 		game->coll++;
 	}
 	else if (obj == 'P')
 	{
 		game->y_player = y;
 		game->x_player = x;
-		load_img(game, "../assets/floor.xpm", x, y);
-		load_img(game, "../assets/rsonic.xpm", x, y);
+		load_img(game, "assets/floor.xpm", x, y);
+		load_img(game, "assets/rsonic.xpm", x, y);
 	}
 	else
-		load_img(game, "../assets/floor.xpm", x, y);
+		load_img(game, "assets/floor.xpm", x, y);
 }
 
 int	load_height(char **map)

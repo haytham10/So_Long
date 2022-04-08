@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:56:41 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 22:16:22 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:26:44 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	open_door(t_game *game)
 		{
 			if (game->map[y][x] == 'E')
 			{
-				load_img(game, "../assets/floor.xpm", x * 50, y * 50);
-				load_img(game, "../assets/open_exit.xpm", x * 50, y * 50);
+				load_img(game, "assets/floor.xpm", x * 50, y * 50);
+				load_img(game, "assets/open_exit.xpm", x * 50, y * 50);
 			}
 			x++;
 		}

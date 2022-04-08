@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:25:33 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/08 22:14:45 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:27:25 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	enemy_pos(t_game *game)
 
 void	move_enemy(t_game *game)
 {
-	load_img(game, "../assets/floor.xpm", game->enemy.x * 50, game->enemy.y * 50);
+	load_img(game, "assets/floor.xpm", game->enemy.x * 50, game->enemy.y * 50);
 	if (game->map[game->enemy.y][game->enemy.x + 1] != '1'
 		&& game->map[game->enemy.y][game->enemy.x + 1] != 'E'
 		&& game->map[game->enemy.y][game->enemy.x + 1] != 'C'
@@ -76,7 +76,7 @@ void	get_coll(t_game *game)
 {
 	game->coll--;
 	game->map[game->enemy.y / 50][game->enemy.x / 50] = '0';
-	load_img(game, "../assets/floor.xpm", game->x_player, game->y_player);
+	load_img(game, "assets/floor.xpm", game->x_player, game->y_player);
 }
 
 int	close_game(t_game *game)
