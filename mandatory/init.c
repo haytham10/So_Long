@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 00:38:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/07 20:37:50 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/04/07 20:47:52 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/08 21:28:38 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void ft_putnbr(int n)
+void	game_init(t_game *game)
 {
-	unsigned int nb;
-	if(n < 0)
-	{
-		nb = -n;
-		ft_putchar ('-');
-	}
-	else
-		nb = n;
-	if(nb > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + 48);
+	game->coll = 0;
+	game->movement = 0;
+	game->win_w = ft_strlen(game->map[0]);
+	game->win_h = load_height(game->map);
 }

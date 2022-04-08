@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 00:38:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/07 20:37:50 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/04/07 20:21:13 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/08 21:30:20 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void ft_putnbr(int n)
+int	f_check(char *str)
 {
-	unsigned int nb;
-	if(n < 0)
-	{
-		nb = -n;
-		ft_putchar ('-');
-	}
-	else
-		nb = n;
-	if(nb > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + 48);
+	int	i;
+
+	i = ft_strlen(str);
+	if (!str)
+		return (0);
+	if (i < 5)
+		return (0);
+	if (str[i - 4] != '.' || str[i - 3] != 'b'
+		|| str[i - 2] != 'e' || str[i - 1] != 'r')
+		return (0);
+	return (1);
 }

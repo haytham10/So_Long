@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_error_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 00:38:48 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/07 20:37:50 by hmokhtar         ###   ########.fr       */
+/*   Created: 2022/04/07 20:17:44 by hmokhtar          #+#    #+#             */
+/*   Updated: 2022/04/08 21:46:59 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long_bonus.h"
 
-void ft_putnbr(int n)
+void	f_error(char *str)
 {
-	unsigned int nb;
-	if(n < 0)
-	{
-		nb = -n;
-		ft_putchar ('-');
-	}
-	else
-		nb = n;
-	if(nb > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + 48);
+	ft_putstr(str);
+	ft_putchar('\n');
+	exit(0);
 }
