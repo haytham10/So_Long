@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:28:56 by hmokhtar          #+#    #+#             */
-/*   Updated: 2022/04/06 22:00:46 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:42:04 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	ft_putchar(char c);
 void	ft_putstr(char *s);
 int		ft_strlen(const char *s);
-void 	ft_putnbr(int n);
+void	ft_putnbr(int n);
 char	*ft_itoa(int n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_realloc(void *buf, int b_size, int a_size);
